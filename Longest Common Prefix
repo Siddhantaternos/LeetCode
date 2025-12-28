@@ -1,0 +1,46 @@
+14. Longest Common Prefix — Notes
+
+Goal:
+Find the longest starting substring common to all strings.
+If none → return "".
+
+Idea (Why sorting works)
+
+Sort the array.
+
+Only compare first and last strings.
+
+If they match at a position → all middle strings match too.
+
+Code Logic
+sort strings
+take first and last
+compare characters one by one
+stop at first mismatch
+return collected prefix
+
+Key Lines Explained
+
+v = sorted(v) → puts most different strings at ends
+
+first = v[0], last = v[-1] → only these matter
+
+min(len(first), len(last)) → avoid overflow
+
+mismatch → stop immediately
+
+Example
+
+["flower","flow","flight"]
+Sorted → ["flight","flow","flower"]
+Compare "flight" & "flower" → "fl"
+
+Complexity
+
+Time: O(n log n)
+
+Space: O(1) extra
+
+Memory Hook
+
+Sort → compare ends → build prefix → stop early
