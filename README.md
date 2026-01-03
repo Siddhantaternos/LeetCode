@@ -1,6 +1,6 @@
 🚀 LeetCode Practice
 
-A collection of LeetCode problems solved to strengthen **Data Structures & Algorithms** with a focus on **clean logic**, **optimal solutions**, and **interview-ready code**.
+A collection of LeetCode problems solved to strengthen **Data Structures & Algorithms** with a focus on **clean logic**, **optimal solutions**, and **interview ready code**.
 
 
 # What This Repository Contains
@@ -12,7 +12,7 @@ A collection of LeetCode problems solved to strengthen **Data Structures & Algor
 
 # Important Note About LeetCode Format
 
-LeetCode is a **judge-based platform**.
+LeetCode is a **judge based platform**.
 
 Only the function logic is written.
 Input, output, and test execution are handled internally.
