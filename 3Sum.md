@@ -1,8 +1,3 @@
-Here’s a **polished, minimal, GitHub-ready version** of your **3Sum notes**.
-Same content, tighter language, cleaner structure, zero fluff. Paste directly into `3Sum.md`.
-
----
-
 # 3Sum — Clean Notes (Interview Ready)
 
 ## 📌 Goal
@@ -141,16 +136,3 @@ class Solution:
 3Sum → Fix one + Two pointers
 4Sum → Fix two + Two pointers
 ```
-
-Same logic. More control.
-
----
-
-If you want next:
-
-* **4Sum notes**
-* **Common mistakes in 3Sum**
-* **Dry run walkthrough**
-* **How interviewers grill this problem**
-
-Say the direction and we continue cleanly.
