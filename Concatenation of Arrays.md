@@ -1,34 +1,87 @@
-Concatenation of Arrays
+# Concatenation of Array
 
+## 📌 Problem
+
+Given an integer array `nums`, return an array `ans` where:
+
+```
+ans = nums + nums
+```
+
+The new array should contain the original array **twice**, in order.
+
+---
+
+## 💡 Core Idea
+
+* Let `n` be the length of `nums`
+* Create a new array of size `2n`
+* Copy `nums` into:
+
+  * the **first half**
+  * the **second half**
+
+---
+
+## 🔁 Algorithm
+
+1. Get the length `n`
+2. Create an array `ans` of size `2 * n`
+3. Loop from `0` to `n - 1`
+4. Place:
+
+   * `nums[i]` at index `i`
+   * `nums[i]` at index `i + n`
+5. Return `ans`
+
+---
+
+## 🧠 Python Code (LeetCode Style)
+
+```python
 class Solution:
     def getConcatenation(self, nums):
-        # nums is the input list
-        # Example: nums = [1, 2, 1]
-
-        # n stores the length of the input array
-        # If nums = [1, 2, 1], then n = 3
         n = len(nums)
-
-        # Create a new list 'ans' of size 2 * n
-        # Initially filled with 0s
-        # Here: ans = [0, 0, 0, 0, 0, 0]
         ans = [0] * (2 * n)
 
-        # Loop through each index of the original array
         for i in range(n):
-            # Place the element nums[i] at index i in ans
-            # This fills the first half of ans
-            # Example: ans[0] = nums[0] → 1
             ans[i] = nums[i]
-
-            # Place the same element nums[i] at index i + n
-            # This fills the second half of ans
-            # Example: ans[0 + 3] = nums[0] → ans[3] = 1
             ans[i + n] = nums[i]
 
-        # After the loop:
-        # ans = [nums[0], nums[1], ..., nums[n-1],
-        #        nums[0], nums[1], ..., nums[n-1]]
-
-        # Return the final concatenated array
         return ans
+```
+
+---
+
+## 🔍 Example
+
+```
+Input: nums = [1, 2, 1]
+Output: [1, 2, 1, 1, 2, 1]
+```
+
+---
+
+## ⏱️ Complexity
+
+* **Time:** `O(n)`
+* **Space:** `O(n)`
+
+---
+
+## 🧩 Key Concepts Used
+
+* Lists
+* Indexing
+* Looping
+* Array size manipulation
+
+---
+
+## 🧠 Pattern / Memory Hook
+
+```
+New array → double size → copy twice
+```
+
+---
