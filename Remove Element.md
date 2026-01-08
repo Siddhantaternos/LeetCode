@@ -120,3 +120,4 @@ Also used in:
 
 If you understand this line, you understand the problem.
 
+Problem link : https://leetcode.com/problems/remove-element/submissions/1878394951/?envType=problem-list-v2&envId=array
