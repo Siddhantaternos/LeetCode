@@ -13,7 +13,7 @@ Duplicate triplets are **not allowed**.
 
 This is a **pattern problem**, not a math trick.
 
----
+--- 
 
 ## 🔑 Why Sorting Is Required
 
