@@ -1,8 +1,3 @@
-Here are **clean, GitHub-ready notes** for **LeetCode: 3Sum Closest**.
-Minimal, structured, interview-useful — just like your other problem notes.
-
----
-
 # 📐 3Sum Closest — Notes
 
 ## 🚩 Problem Summary
@@ -141,10 +136,3 @@ you clearly understand the pattern.
 | 4Sum         | Fix two + two pointers    |            |   |
 
 ---
-
-If you want:
-
-* ASCII diagrams of pointer movement
-* Comparative notes with `3Sum` / `2Sum Closest`
-* A **step-by-step dry run example**
-  just ask!
