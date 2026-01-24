@@ -1,4 +1,4 @@
-# 📐 3Sum Closest — Notes
+# 📐 3 Sum Closest 
 
 ## 🚩 Problem Summary
 
