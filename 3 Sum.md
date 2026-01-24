@@ -1,4 +1,4 @@
-# 3Sum — Clean Notes (Interview Ready)
+# 3 Sum 
 
 ## 📌 Goal
 
