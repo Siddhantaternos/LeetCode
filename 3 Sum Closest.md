@@ -12,7 +12,7 @@ Return the **closest possible sum**.
 
 **Sort + Fix one element + Two pointers**
 
-This is a variation of classical 3-sum pattern — but instead of collecting all triplets with sum zero, we want the triplet whose sum is closest to the given `target`.
+This is a variation of classical 3 sum pattern but instead of collecting all triplets with sum zero, we want the triplet whose sum is closest to the given `target`.
 
 ---
 
