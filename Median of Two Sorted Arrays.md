@@ -100,7 +100,7 @@ median = (max(left1, left2) + min(right1, right2)) / 2
 
 ### If total length is odd:
 
-```
+```  
 median = max(left1, left2)
 ```
 
