@@ -1,4 +1,4 @@
-# 📊 Median of Two Sorted Arrays — Notes
+# 📊 Median of Two Sorted Arrays 
 
 ## Problem Summary
 
