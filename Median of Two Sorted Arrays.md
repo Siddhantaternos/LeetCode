@@ -9,7 +9,7 @@ Given two **sorted arrays** `nums1` and `nums2`, find the **median** of the comb
 * Median may be an integer or float
 
 ---
-
+  
 ## Key Insight
 
 We **do not merge** the arrays.
