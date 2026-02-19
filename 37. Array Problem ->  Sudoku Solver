@@ -1,0 +1,214 @@
+# 🧩 Sudoku Solver — Notes
+
+## 📌 Problem Summary
+
+Given a partially filled 9×9 Sudoku board, fill the empty cells (`"."`) so that:
+
+* Each **row** contains digits `1–9` exactly once
+* Each **column** contains digits `1–9` exactly once
+* Each **3×3 box** contains digits `1–9` exactly once
+
+Board size is **9×9** — classic Sudoku.
+
+---
+
+## 🧠 Core Insight
+
+This is a **constraint satisfaction problem**.
+
+We need to fill cells under strict rules:
+
+```
+Valid Row
+Valid Column
+Valid 3×3 Box
+```
+
+There is no greedy shortcut.
+The correct approach is **Backtracking** (DFS) with validity checks.
+
+---
+
+## 💡 Backtracking Strategy
+
+1. Find the next empty cell (`"."`)
+2. Try digits `'1'` to `'9'`
+3. If placing a number keeps the board valid:
+
+   * Place it
+   * Recursively solve the rest
+4. If no number fits:
+
+   * Backtrack (reset cell)
+5. Solution is found when no empty cells remain
+
+This is DFS with **pruning** based on Sudoku rules.
+
+---
+
+## ✔️ Validity Conditions
+
+When placing digit `d` at `(r, c)`:
+
+* `d` must not appear in:
+
+  * same **row**
+  * same **column**
+  * same **3×3 sub-box**
+
+Box index trick:
+
+```
+boxRow = (r // 3)
+boxCol = (c // 3)
+```
+
+Each box is identified by `(boxRow, boxCol)` pair.
+
+---
+
+## 🧠 Optimization (O1) Lookups
+
+Instead of scanning entire row/column/box for each placement, we maintain:
+
+```
+rows[r][digit]
+cols[c][digit]
+boxes[boxIndex][digit]
+```
+
+Where `boxIndex = (r // 3) * 3 + (c // 3)`
+
+This reduces validity checks to **constant time**.
+
+---
+
+## 🧠 Python Code (LeetCode Style)
+
+```python
+from typing import List
+
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        # Data structures for O(1) checks
+        rows = [set() for _ in range(9)]
+        cols = [set() for _ in range(9)]
+        boxes = [set() for _ in range(9)]
+        
+        # Initialize sets with existing digits
+        for r in range(9):
+            for c in range(9):
+                if board[r][c] != ".":
+                    digit = board[r][c]
+                    rows[r].add(digit)
+                    cols[c].add(digit)
+                    box_index = (r // 3) * 3 + (c // 3)
+                    boxes[box_index].add(digit)
+
+        # Backtracking function
+        def backtrack(r, c):
+            # If we've reached end of row, go to next row
+            if c == 9:
+                return backtrack(r + 1, 0)
+            # If we've reached end of board, solution found
+            if r == 9:
+                return True
+
+            # If current cell is already filled, move on
+            if board[r][c] != ".":
+                return backtrack(r, c + 1)
+
+            box_index = (r // 3) * 3 + (c // 3)
+
+            # Try digits 1 to 9
+            for d in map(str, range(1, 10)):
+                if (d not in rows[r] and
+                    d not in cols[c] and
+                    d not in boxes[box_index]):
+
+                    # Place digit
+                    board[r][c] = d
+                    rows[r].add(d)
+                    cols[c].add(d)
+                    boxes[box_index].add(d)
+
+                    # Recurse
+                    if backtrack(r, c + 1):
+                        return True
+
+                    # Undo (backtrack)
+                    board[r][c] = "."
+                    rows[r].remove(d)
+                    cols[c].remove(d)
+                    boxes[box_index].remove(d)
+
+            # No valid digit found → backtrack
+            return False
+
+        backtrack(0, 0)
+```
+
+---
+
+## ⏱️ Complexity
+
+| Metric | Value                                   |
+| ------ | --------------------------------------- |
+| Time   | Exponential (worst-case)                |
+| Space  | O(1) extra (board is modified in-place) |
+
+Backtracking is inherently exponential, but pruning via row/col/box sets dramatically reduces search space.
+
+---
+
+## 🧠 Mental Model
+
+Sudoku solving is essentially:
+
+```
+DFS + Constraint Checking (row, col, box)
+```
+
+Think of it like:
+
+* Explore
+* Validate
+* Commit
+* Undo if needed
+
+This is fundamental in constraint problems like crosswords, n-queens, and logic puzzles.
+
+---
+
+## 🧩 Interview Signals
+
+If you can explain:
+
+* Why you need backtracking
+* How sets enable O(1) validation
+* How the 3×3 box indexing works
+
+then you “own” this problem.
+
+---
+
+## 🧠 Pattern Family
+
+| Problem       | Pattern                            |
+| ------------- | ---------------------------------- |
+| Sudoku Solver | Backtracking with constraints      |
+| N-Queens      | Backtracking with symmetry pruning |
+| Permutations  | Backtracking combinations          |
+
+---
+
+###✨ Extra Notes (Optional)
+You can optimize further using heuristics:
+
+* Least-choices first (choose row/col with fewest options)
+* Precompute empty cells list
+
+But the base version above is enough for interviews.
+
+---
+
