@@ -1,6 +1,6 @@
 ## 🚀 LeetCode Practice
 
-A structured collection of **LeetCode solutions** focused on building strong **Data Structures & Algorithms** fundamentals with **clean logic**, **optimal complexity**, and **interview-ready code**.
+A structured collection of **LeetCode solutions** focused on building strong **Data Structures & Algorithms** fundamentals with **clean logic**, **optimal complexity**, and **interview-ready code**.  
 
 ---
 
