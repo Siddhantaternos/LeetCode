@@ -1,0 +1,69 @@
+# 3014. Minimum Number of Pushes to Type Word I
+
+---
+
+### Problem Explanation
+
+* You are given a string `word` containing unique lowercase letters, and you need to assign letters to 8 available keypad keys (`2` through `9`).
+* Each key can hold multiple letters:
+* Typing the $1^\text{st}$ letter mapped to a key requires **1 push**.
+* Typing the $2^\text{nd}$ letter mapped to that key requires **2 pushes**.
+* Typing the $3^\text{rd}$ letter requires **3 pushes**, and so on.
+
+
+* To minimize the total number of presses, assign characters using a **greedy approach**:
+* Fill the $1^\text{st}$ position of all 8 keys first (indices 0 to 7 require **1 push** each).
+* Fill the $2^\text{nd}$ position of all 8 keys next (indices 8 to 15 require **2 pushes** each).
+* Fill the $3^\text{rd}$ position of all 8 keys next (indices 16 to 23 require **3 pushes** each).
+* Fill the remaining positions (indices 24 and 25 require **4 pushes** each).
+
+
+* Formula for 0-indexed position $i$: $\text{Pushes} = (i / 8) + 1$.
+
+---
+
+### Code
+
+#### Python
+
+```python
+class Solution:
+    def minimumPushes(self, word):
+        n = len(word)
+        total_pushes = 0
+        
+        for i in range(n):
+            total_pushes += (i // 8) + 1
+            
+        return total_pushes
+
+```
+
+---
+
+### Code Explanation
+
+1. **`n = len(word)`**
+* Gets the total count of distinct characters in `word`.
+
+
+2. **`total_pushes = 0`**
+* Initializes an accumulator variable to keep track of the cumulative button presses.
+
+
+3. **`for i in range(n):`**
+* Iterates through every character using a 0-based index `i`.
+
+
+4. **`(i // 8) + 1`**
+* Computes the number of presses for the $i$-th letter via integer division (`//`):
+* $i = 0 \text{ to } 7 \implies (i // 8) = 0 \implies 0 + 1 = \mathbf{1\text{ push}}$
+* $i = 8 \text{ to } 15 \implies (i // 8) = 1 \implies 1 + 1 = \mathbf{2\text{ pushes}}$
+* $i = 16 \text{ to } 23 \implies (i // 8) = 2 \implies 2 + 1 = \mathbf{3\text{ pushes}}$
+* $i = 24 \text{ to } 25 \implies (i // 8) = 3 \implies 3 + 1 = \mathbf{4\text{ pushes}}$
+
+
+
+
+5. **`return total_pushes`**
+* Returns the final calculated minimum total button pushes.
